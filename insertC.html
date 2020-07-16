@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <title>Control Button</title>
+    <link rel="stylesheet" href="RobotControl.css">
+
+
+    <script>
+        $(document).ready(function(){
+            $("#sub").submit(function(event){
+                event.preventDefault();
+                var F=$("#F").val();
+                var L=$("#L").val();
+                var R=$("#R").val();
+                var S=$("#S").val();
+                var B=$("#B").val();
+                $("#movingWord").load("insertC.php",{
+                    right:R,
+                    forward:F,
+                    left:L,
+                    stop:S,
+                    back:B,
+                    submit:1
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="header">
+        <div class="HeaderTitel">
+            <h1> Robot Controler </h3>
+        </div>
+        <div class="icon" >
+             <img  src="robot1.png" alt="robot pic here" width="60px" height="60px">
+        </div>
+       
+    </div>
+
+    <!-- Robot -->
+    
+    <h2 id="movingWord">Press the button to control the robot</h3>
+    <div >
+        
+        <img id="robot" src="robot.png" alt="robot pic here" width="100px" height="110px">
+    </div>
+
+        <!-- Forwarded-->
+        <div>
+            <form id="sub" action="insertC.php" method="POST">
+        <div id="Forwarede" >
+            <button type="submit"  class="button" id="F" onclick="MoveForwarded()">Forward</button>
+        </div>
+
+        <!-- Left-->
+        <div id="Left">
+            <button type="submit" class="button" id="L" onclick="MoveLeft()">Left</button>
+            
+        </div>
+
+        <!-- Stop-->
+        <div id="Stop">
+            <button type="submit" class="Sbutton" id="S" onclick="Stop()">Stop</button>
+        </div>
+
+        <!-- Right-->
+        <div id="Right"> 
+            <button type="submit" class="button" id="R" onclick="MoveRight()">Right</button>
+        </div>
+
+        <!-- Back-->
+        <div id="Back">
+            <button type="submit" class="button" id="B" onclick="MoveBack()">Back</button>
+        </div>
+
+        </form>
+    </div>
+    
+    
+    <script src="robot.js"></script>
+
+</body>
+</html>
